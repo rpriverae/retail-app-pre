@@ -1,4 +1,4 @@
-name: Pipeline de Calidad Retail App PRE
+name: Pipeline de Calidad Retail App
 
 # ¿Cuándo corre el workflow?
 on:
@@ -9,16 +9,17 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest  # Runner aislado en la nube
+
     env:
-      DATABASE_ENGINE: ${{vars.DATABASE_ENGINE}}
-      DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}  # Variable de entorno para el análisis
+      DATABASE_ENGINE: ${{ vars.DATABASE_ENGINE }}
+      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
 
     # Acciones secuenciales
     steps:
       - name: Clonar el repositorio
         uses: actions/checkout@v3
 
-      -name: Ejecutar Comando SH
+      - name: Ejecutar Comandos SH
         run: |
           echo "Ejecutando comando SH simulado..."
           echo "DATABASE_ENGINE: $DATABASE_ENGINE"
